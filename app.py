@@ -18,12 +18,12 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 
 #arquivo csv contendo os vértices do grafo
-nodes = pd.read_csv('https://raw.githubusercontent.com/ritallopes/OFPFINAL/main/nodes.csv?token=AJ4IH5ROYO6VM2CSIOV7JAK73RBOC')
+nodes = pd.read_csv('https://raw.githubusercontent.com/ritallopes/OFPFINAL/main/nodes.csv')
 #configurando nome de colunas e index
 nodes.columns = ['index', 'name', 'position']
 nodes.set_index('index', inplace=True)
 nodes.position = nodes.position.str.extract(r'\[(.+)\]').iloc[:,0]
-edges = pd.read_csv('https://raw.githubusercontent.com/ritallopes/OFPFINAL/main/edges.csv?token=AJ4IH5RJ2VOFUIHXUOTSW3K73RBLQ')
+edges = pd.read_csv('https://raw.githubusercontent.com/ritallopes/OFPFINAL/main/edges.csv')
 edges.columns  = ['source', 'target', 'lib', 'version']
 #adicionando propriedade versão a partir de lib source
 edges.iloc[:,3] = edges.iloc[:, 2].str.extract(r'\-(\d+.+)').iloc[:,0]
